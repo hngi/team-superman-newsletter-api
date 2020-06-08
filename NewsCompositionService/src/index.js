@@ -21,7 +21,8 @@ mongoose
   .connect(process.env.DATABASE_URL || 'mongodb://localhost/newsletter_api', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-    useFindAndModify: false
+    useFindAndModify: false,
+    useCreateIndex: true
   })
   .then(() => {
     console.log('Successfully connected to MongoDB Atlas!');
