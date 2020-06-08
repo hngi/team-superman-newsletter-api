@@ -11,7 +11,7 @@ class Subscribe {
    * @param {object} next - next middleware
    * @returns {object} custom response
    */
-  async subscribe(req, res, next) {
+  static async subscribe(req, res, next) {
     try {
       const { email } = req.user;
       // Action to be performed. Result is stored in 'data'
