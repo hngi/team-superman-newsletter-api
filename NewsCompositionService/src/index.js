@@ -18,7 +18,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 mongoose
-  .connect(process.env.DATABASE_URL, {
+  .connect(process.env.DATABASE_URL || 'mongodb://localhost/newsletter_api', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useFindAndModify: false
