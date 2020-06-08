@@ -13,7 +13,7 @@ class Subscribe {
    */
   static async subscribe(req, res, next) {
     try {
-      const { email } = req.user;
+      const { email } = req.body;
       // Action to be performed. Result is stored in 'data'
       const data = await subscribeService.updateUser({
         email,
