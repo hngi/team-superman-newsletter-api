@@ -17,6 +17,17 @@ class lessonValidation {
     );
     validator(format, req.body, res, next);
   }
+
+  static validateSignin(req, res, next) {
+    const format = Joi.object().keys(
+      {
+        username: Format.username,
+        password: Format.password
+      },
+      {}
+    );
+    validator(format, req.body, res, next);
+  }
 }
 
 export default lessonValidation;
