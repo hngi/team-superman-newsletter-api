@@ -8,7 +8,10 @@ class lessonValidation {
   static validateData(req, res, next) {
     const format = Joi.object().keys(
       {
-        email: Format.email
+        email: Format.email,
+        username: Format.username,
+        password: Format.password,
+        name: Format.name
       },
       {}
     );
