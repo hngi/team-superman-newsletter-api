@@ -1,10 +1,8 @@
 import { Router } from 'express';
-import subscribeRoutes from './subscribeRoute';
-import authRoutes from './authRoute';
+import subscribeRoutes from './subscrptionRoute';
 
 const router = Router();
 
-router.use('/subscribe', subscribeRoutes);
-router.use('/auth', authRoutes);
+router.use('/subscription', subscribeRoutes);
 router.get('/', (req, res) => res.send('This is my index page'));
 export default router;
