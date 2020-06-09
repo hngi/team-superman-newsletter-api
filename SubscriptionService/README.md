@@ -26,3 +26,4 @@
 ## Contributors
 
 - [Omomurewa George-Ashiru](https://github.com/murewaashiru)
+- [Menyaga Emmanuel (mhizterkeyz)](https://github.com/mhizterkeyz)
