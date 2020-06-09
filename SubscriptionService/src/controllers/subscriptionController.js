@@ -21,11 +21,11 @@ class Subscribe {
       const userExist = await subscribeService.getSubscriber({
         email: user.email
       });
-      if (userExist.status === true) {
+      if (userExist && userExist.status === true) {
         return Response.conflictError(res, 'You are already subscribed');
       }
       // Update status if user exists or create a new user
-      if (userExist.status === false) {
+      if (userExist && userExist.status === false) {
         data = await subscribeService.updateSubscriber(
           { email: user.email },
           { status: true }
