@@ -16,3 +16,13 @@
 $router->get('/', function () use ($router) {
     return $router->app->version();
 });
+
+$router->group(['prefix'=>'api'], function() use($router){
+
+    $router->get('/newsletter', 'NewsComposeController@index');
+    $router->post('/newsletter', 'NewsComposeController@create');
+    $router->get('/newsletter/{id}', 'NewsComposeController@showone');
+    $router->put('/newsletter/{id}', 'NewsComposeController@update');
+    $router->delete('/newsletter/{id}', 'NewsComposeController@destroy');
+
+});
