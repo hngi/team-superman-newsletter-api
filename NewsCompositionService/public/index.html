@@ -1,74 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Newsletter creation site</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <style>
+      body {
+        max-width: 756px;
+        margin: 0 auto;
+      }
+      .post-section {
+        box-shadow: 2px 2px 5px #808080;
+        background-color: #333;
+        font-weight: bold;
+        color: #fff;
+        box-shadow: 2px 3px 5px #808080;
+        padding: 20px;
+      }
+      #name {
+        margin-bottom: 20px;
+      }
+      #content {
+        min-height: 150px;
+      }
+    </style>
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Newsletter creation site</title>
-   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <style>
-    .post-section {
-      box-shadow: 2px 2px 5px #808080;
-      background-color: #3b71a1;
-      font-weight: bold;
-      color: #fff;
-      box-shadow: 2px 3px 5px #808080;
-      padding: 20px;
-    }
-
-  </style>
-</head>
-
-<body>
-  <h1>Create Newsletter</h1>
-  <div class="post-section">
+  <body>
+    <h1>Create Newsletter</h1>
+    <div class="post-section">
       <form onsubmit="return API.save()">
-          <div class="form-group">
-              <h3>Compose Newsletter</h3>
-              <input id="name" type="text" placeholder="Author's name'">
-              <textarea id="content" class="form-control"></textarea>
-              <br />
-          </div>
-          <button class="btn btn-danger" type="submit">Submit</button>
+        <div class="form-group">
+          <h3>Compose Newsletter</h3>
+          <input id="name" type="text" placeholder="Author's name" />
+          <br />
+          <textarea id="content" class="form-control"></textarea>
+          <br />
+        </div>
+        <button class="btn btn-danger" type="submit">Submit</button>
       </form>
     </div>
-  <script>
-    const API = (() => {
-      const save = () => {
-        try {
-             const _name = document.querySelector("#name").value;
-             const _content = document.querySelector("#content").value;
-              fetch("http://localhost:8000/email", {
-                  method: 'POST',
-                  body: JSON.stringify({
-                    name: _name,
-                    content: _content
-                  }),
-                  headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                  }
-              }).then(res=>{
-                console.log(res);
-                console.log("sent");
-              })
+    <script>
+      const API = (() => {
+        const save = () => {
+          try {
+            const _name = document.querySelector("#name").value;
+            const _content = document.querySelector("#content").value;
+            fetch("http://localhost:8000/email", {
+              method: "POST",
+              body: JSON.stringify({
+                name: _name,
+                content: _content,
+              }),
+              headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json",
+              },
+            }).then((res) => {
+              console.log(res);
+              console.log("sent");
+            });
           } catch (e) {
-          console.log(e);
-          console.log('--------------------------');
-        }
-        return false;
-      };
+            console.log(e);
+            console.log("--------------------------");
+          }
+          return false;
+        };
 
-      return {
-        save
-      }
-    })();
-  </script>
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-</body>
+        return {
+          save,
+        };
+      })();
+    </script>
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
+  </body>
 
-<script src="./index.js"></script>
+  <script src="./index.js"></script>
 </html>
