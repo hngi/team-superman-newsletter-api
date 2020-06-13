@@ -1,0 +1,123 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+h1{
+    padding: 90px;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 100;
+    background-color: rgb(96, 96, 233);
+    color: rgb(255, 255, 255);
+}
+
+#news-list{
+    display: flex;
+    font-family: Arial, Helvetica, sans-serif;
+    list-style: none;
+    text-align: center;
+    margin-top: 2%;
+    align-items: center;
+    color: white;
+    flex-wrap: wrap;
+    justify-content: space-around;
+
+}
+#first-news-card{
+    width: 300px;
+    height: 500px;
+    background-color: rgba(255, 255, 255, 0.795);
+    margin: 10px;
+}
+
+#second-news-card{
+    width: 300px;
+    height: 500px;
+    background-color: rgba(255, 255, 255, 0.795);
+    margin: 10px;
+}
+#third-news-card{
+    width: 300px;
+    height: 500px;
+    background-color: rgba(255, 255, 255, 0.795);
+    margin: 10px;
+}
+#forth-news-card{
+    width: 300px;
+    height: 500px;
+    background-color: rgba(255, 255, 255, 0.795);
+    margin: 10px;
+}
+h2{
+    padding-top: 20%;
+    text-align: center;
+    color: rgb(255, 255, 255);
+    width: 100%;
+    background-color: rgb(96, 96, 233);
+    height: 20%;
+}
+#texts-card{
+    padding: 15px;
+    color: green;
+}
+p{
+    margin-bottom: 60px;
+    color: rgba(0, 0, 0, 0.699);
+    font-size: 19px;
+}
+a{
+    color: rgb(255, 255, 255);
+    font-size: 15px;
+    padding: 10px;
+    background-color: rgb(96, 96, 233);
+    text-decoration: none;
+    border-radius: 0px;
+    transition: all 200ms;
+}
+a:hover{
+    border-radius: 5px;
+    background-color: rgb(64, 64, 255);
+}
+/* Footer form input */
+footer{
+    margin-top: 100px;
+    margin-bottom: 50px;
+}
+#form-input{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+input{
+    padding: 20px;
+    width: 50%;
+    margin: auto;
+    margin-bottom:20px ;
+    border-radius: 3px;
+    border: 1px solid rgb(28, 3, 255);
+}
+#btns{
+    display: flex;
+    margin: auto;
+}
+#button{
+    padding: 10px 20px;
+    color: white;
+    background-color: rgb(96, 96, 233);
+    border: none;
+    margin: auto;
+    cursor: pointer;
+    transition: all 200ms;
+}
+.subId{
+    padding: 9px 20px;
+    color: rgb(96, 96, 233) ;
+    background-color: white;
+    border: 1px solid rgb(96, 96, 233);
+    width: 100%;
+    margin: auto;
+    margin-top: 10px;
+    cursor: pointer;
+    transition: all 200ms;
+}

@@ -1,0 +1,29 @@
+
+ <h1>NEWS LETTERS</h1>
+    <ul id="news-list">
+        {{# each data as |val key|}}
+      <li>
+         <div id="first-news-card">
+           <h2>{{val.name}}</h1>
+            <div id="texts-card">
+              <p>
+                {{val.content}} 
+              </p>
+              <a href="#">Learn More</a>
+            </div>
+         </div>
+      </li>
+      {{/each}}
+    </ul> 
+
+    <footer>
+      <div id="form-input">
+        <input id="email" placeholder="Enter your email" type="text"/>
+        <div id="btns">
+          <button class="btn btn-danger" id="button">Subscribe<button>
+        </div>
+        <div id="btns">
+          <button class="subId" id="subId">Subscribe to our newsletter and stay informed about our products and services</button>
+        </div>
+      </div>
+    </footer>

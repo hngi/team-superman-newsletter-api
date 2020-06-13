@@ -1,0 +1,47 @@
+version: '3'
+services:
+  db:
+    image: mongo
+    ports:
+      - "27017:27017"
+
+  subscriptionservice:
+    build: './SubscriptionService'
+    ports:
+      - "11004:11004"
+    depends_on: 
+      - db
+    environment:
+      - MONGO_DB_URI=mongodb://db/microservices
+
+  emailingservice:
+    build: './EmailingService'
+    ports:
+      - "11001:11001"
+    environment:
+      - SUBSCRIPTION_SERVER=http://subscriptionservice:11004
+
+  newscompositionservice:
+    build: './NewsCompositionService'
+    ports:
+      - "11002:11002"
+    depends_on: 
+      - db
+    environment:
+      - MONGO_DB_URI=mongodb://db/microservices
+      - EMAILING_SERVER=http://emailingservice:11001
+
+  newspageservice:
+    build: './NewsPageService'
+    ports:
+      - "11003:11003"
+    environment:
+      - SUBSCRIPTION_SERVER=http://subscriptionservice:11004
+      - NEWS_SERVER=http://newscompositionservice:11002
+  
+  swagger:
+    build: './swagger'
+    ports:
+      - "11010:11010"
+    environment:
+      - PORT=11010

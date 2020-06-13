@@ -1,0 +1,138 @@
+swagger: "2.0"
+info:
+  version: "1.0"
+  title: Team Superman Newsletter
+# during dev, should point to your local machine
+host: localhost:10010
+# basePath prefixes all resource paths 
+basePath: /
+# 
+schemes:
+  - https
+# format of bodies a client can send (Content-Type)
+consumes:
+  - application/json
+# format of the responses to the client (Accepts)
+produces:
+  - application/json
+paths:
+  /subscription/api/v1/subscription/subscribe:
+    post:
+      description: to subscribe to list
+      parameters:
+        - name: email
+          in: query
+          description: Email to subscribe
+          required: true
+          type: string
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/SuccessRespons"
+        # responses may fall through to errors
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+  /subscription/api/v1/subscription/unsubscribe:
+    patch:
+      description: to unsubscribe email to list
+      parameters:
+        - name: email
+          in: query
+          description: Email to unsubscribe
+          required: true
+          type: string
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/SuccessRespons"
+        # responses may fall through to errors
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+  /subscription/api/v1/subscription:
+    get:
+      description: get all subscriptions
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/SuccessResponsArray"
+        # responses may fall through to errors
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+  /subscription/api/v1/subscription/active:
+    get:
+      description: get all active subscriptions
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/SuccessResponsArray"
+        # responses may fall through to errors
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+  /swagger:
+    x-swagger-pipe: swagger_raw
+# complex objects have schema definitions
+definitions:
+  SuccessRespons:
+    required:
+      - status
+      - message
+      - data
+    properties:
+      status:
+        type: string
+      message:
+        type: string
+      data: 
+        type: object
+  SuccessResponsArray:
+    required:
+      - status
+      - message
+      - data
+    properties:
+      status:
+        type: string
+      message:
+        type: string
+      data: 
+        type: array
+        items:
+          $ref: "#/definitions/Subscriber"
+  Subscriber:
+    properties:
+      _id:
+        type: string
+      email:
+        type: string
+      status:
+        type: boolean
+      createdAt:
+        type: string
+      updatedAt:
+        type: string
+      __v:
+        type: string
+  ErrorResponse:
+    required:
+      - status
+      - message
+      - error
+    properties:
+      status:
+        type: string
+      message:
+        type: string
+      error:
+        type: string

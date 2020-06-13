@@ -1,0 +1,24 @@
+{
+  "name": "swagger",
+  "version": "1.0.0",
+  "description": "Team Superman Newsletter API Swagger",
+  "main": "index.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hngi/team-superman-newsletter-api.git"
+  },
+  "author": "Arturo Delgado",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hngi/team-superman-newsletter-api/issues"
+  },
+  "homepage": "https://github.com/hngi/team-superman-newsletter-api#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "swagger-ui-express": "^4.1.4",
+    "yamljs": "^0.3.0"
+  }
+}
