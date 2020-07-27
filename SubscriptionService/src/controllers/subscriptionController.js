@@ -1,6 +1,7 @@
 /* eslint-disable require-jsdoc */
 /* eslint-disable class-methods-use-this */
 const Response =require ('../utils/response');
+
 const subscribeService =require ('../services/subscribeService');
 
 /** Class that handles subscription */
@@ -23,8 +24,11 @@ class Subscribe {
         email: user.email
       });
       if (userExist) {
+
         if (userExist.status === true) {
+
           return Response.conflictError(res, 'You are already subscribed');
+
         }
         // Update status if user exists or create a new user
         if (userExist.status === false) {
@@ -40,8 +44,8 @@ class Subscribe {
       }
 
       return Response.customResponse(res, 200, 'Subscribed successfully', data);
-    } catch (error) {
-      next(error);
+    } catch (err) {
+      next(err);
     }
   }
 
@@ -72,11 +76,11 @@ class Subscribe {
       return Response.customResponse(
         res,
         200,
-        'Unsubscribed successfully',
+        'You have been unsubscribed successfully',
         data
       );
-    } catch (error) {
-      next(error);
+    } catch (err) {
+      next(err);
     }
   }
 
@@ -94,8 +98,8 @@ class Subscribe {
       });
 
       return Response.customResponse(res, 200, 'All active subscribers:', data);
-    } catch (error) {
-      next(error);
+    } catch (err) {
+      next(err);
     }
   }
 
@@ -111,8 +115,8 @@ class Subscribe {
       const data = await subscribeService.getSubscribers({});
 
       return Response.customResponse(res, 200, 'All subscribers:', data);
-    } catch (error) {
-      next(error);
+    } catch (err) {
+      next(err);
     }
   }
 }

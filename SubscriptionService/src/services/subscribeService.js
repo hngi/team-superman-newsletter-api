@@ -12,8 +12,8 @@ class subscribeService {
       const data = await Subscription.create(subscriber);
 
       return data;
-    } catch (error) {
-      throw error;
+    } catch (err) {
+      throw err;
     }
   }
 
@@ -24,10 +24,14 @@ class subscribeService {
    * @returns {object} subscriber
    */
   static async updateSubscriber(param, data) {
+
     try {
+
       return await Subscription.findOneAndUpdate(param, data, { new: true });
-    } catch (error) {
-      throw error;
+
+    }
+     catch (err) {
+      throw err;
     }
   }
 
@@ -41,8 +45,9 @@ class subscribeService {
       const data = await Subscription.find(param);
 
       return data;
-    } catch (error) {
-      throw error;
+    }
+     catch (err) {
+      throw err;
     }
   }
 
@@ -56,7 +61,8 @@ class subscribeService {
       const data = await Subscription.findOne(param);
 
       return data;
-    } catch (error) {
+    }
+     catch (error) {
       throw error;
     }
   }
